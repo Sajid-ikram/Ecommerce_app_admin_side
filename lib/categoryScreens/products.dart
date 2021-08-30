@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app_for_admin/helperProvider/drawerProvider.dart';
+import 'package:ecommerce_app_for_admin/helperProvider/screenProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -29,7 +30,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
               if (snapshot.hasError) {
                 return Text("Something went wrong");
               }
-
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: CircularProgressIndicator(),
@@ -73,7 +73,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
         ),
         GestureDetector(
           onTap: () {
-
+            Provider.of<ScreenProvider>(context, listen: false)
+                .changeScreen("AddProducts");
           },
           child: Container(
             height: 50,
@@ -104,6 +105,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
       ],
     );
   }
+
 
   Widget productCard(QuerySnapshot<Object?> data, int index) {
     return InkWell(

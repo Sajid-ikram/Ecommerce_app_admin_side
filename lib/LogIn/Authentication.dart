@@ -1,18 +1,23 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Authentication with ChangeNotifier {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   Stream<User?> get authStateChange => _firebaseAuth.authStateChanges();
 
-  Future<String> signIn(String email, String password) async {
+  Future<String> signIn(String email, String password,BuildContext context) async {
     try {
-      await _firebaseAuth.signInWithEmailAndPassword(
+      await _firebaseAuth
+          .signInWithEmailAndPassword(
         email: email,
         password: password,
-      );
+      )
+          .then((value) async {
+
+      });
 
       return "Success";
     } on FirebaseAuthException catch (e) {
@@ -45,7 +50,7 @@ class Authentication with ChangeNotifier {
         password: password,
       )
           .then(
-            (value) {
+        (value) {
           FirebaseFirestore.instance
               .collection("users")
               .doc(value.user!.uid)
@@ -79,17 +84,4 @@ class Authentication with ChangeNotifier {
     await _firebaseAuth.signOut();
   }
 
-  Future<String> sendOtp(String email) async {
-    EmailAuth.sessionName = "Ecommerce";
-    var data = await EmailAuth.sendOtp(receiverMail: email);
-    if (!data) {
-      return "Invalid Email";
-    } else {
-      return "ok";
-    }
-  }
-
-  bool verify(String email, String otp) {
-    return (EmailAuth.validate(receiverMail: email, userOTP: otp));
-  }
 }

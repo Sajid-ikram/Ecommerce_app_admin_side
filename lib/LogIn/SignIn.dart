@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_for_admin/LogIn/warningHelper.dart';
+import 'package:ecommerce_app_for_admin/Widgets/loadingIndicator.dart';
 import 'package:ecommerce_app_for_admin/Widgets/textInputDeco.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -36,7 +37,7 @@ class _SignInState extends State<SignIn> {
         _emailKey.currentState!.validate()) {
       buildShowDialog(context);
       Provider.of<Authentication>(context, listen: false)
-          .signIn(emailController.text, passwordController.text)
+          .signIn(emailController.text, passwordController.text,context)
           .then(
         (value) {
           Navigator.of(context, rootNavigator: true).pop();
@@ -49,16 +50,7 @@ class _SignInState extends State<SignIn> {
     }
   }
 
-  buildShowDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return Center(
-            child: CircularProgressIndicator(color: Color(0xffFCCFA8)),
-          );
-        });
-  }
+
 
   @override
   Widget build(BuildContext context) {

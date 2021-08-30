@@ -1,5 +1,7 @@
 
+import 'package:ecommerce_app_for_admin/LogIn/HoldingPageForVerfication.dart';
 import 'package:ecommerce_app_for_admin/categoryScreens/addNewProduct.dart';
+import 'package:ecommerce_app_for_admin/firebaseServices/productService.dart';
 import 'package:ecommerce_app_for_admin/helperProvider/drawerProvider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: Colors.transparent,));
     return MultiProvider(
@@ -33,6 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => Warning()),
         ChangeNotifierProvider(create: (_) => DrawerProvider()),
         ChangeNotifierProvider(create: (_) => ScreenProvider()),
+        ChangeNotifierProvider(create: (_) => ProductServices()),
 
 
       ],
@@ -66,14 +69,10 @@ class MyApp extends StatelessWidget {
           },
         ),
         routes: {
-
           "addNewProduct": (ctx) => AddNewProduct(),
-
         },
       ),
-
     );
-
   }
 }
 
@@ -108,10 +107,11 @@ class _MiddleOfHomeAndSignInState extends State<MiddleOfHomeAndSignIn> {
       builder: (context, snapshot) {
         if(snapshot.connectionState == ConnectionState.waiting){
           return Center(
-            child: CircularProgressIndicator(color: Color(0xffFCCFA8)),
+            child: CircularProgressIndicator(color: Colors.red /*Color(0xffFCCFA8)*/),
           );
         }
-        return snapshot.data == null ? SignIn() : SiteLayout();
+
+        return snapshot.data == null ? SignIn() : HoldingPageForVerification();
       },
     );
   }
