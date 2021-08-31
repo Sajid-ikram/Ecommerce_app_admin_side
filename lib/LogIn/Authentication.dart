@@ -84,4 +84,16 @@ class Authentication with ChangeNotifier {
     await _firebaseAuth.signOut();
   }
 
+
+  Future makeAdmin(String uid) async {
+    FirebaseFirestore.instance.collection("users").doc(uid).update(
+      {"role" : "admin"},
+    );
+  }
+
+  Future removeAdmin(String uid) async {
+    FirebaseFirestore.instance.collection("users").doc(uid).update(
+      {"role" : "user"},
+    );
+  }
 }

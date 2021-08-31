@@ -1,4 +1,5 @@
 import 'package:ecommerce_app_for_admin/LogIn/Authentication.dart';
+import 'package:ecommerce_app_for_admin/categoryScreens/CustomersScreen.dart';
 import 'package:ecommerce_app_for_admin/categoryScreens/addNewProduct.dart';
 import 'package:ecommerce_app_for_admin/categoryScreens/products.dart';
 import 'package:ecommerce_app_for_admin/helperProvider/screenProvider.dart';
@@ -30,7 +31,7 @@ Widget screenSelector(int flx) {
               }
             case "Customers":
               {
-                return _buildContainer(provider.screenName);
+                return CustomersScreen();
               }
             case "Statistics":
               {
