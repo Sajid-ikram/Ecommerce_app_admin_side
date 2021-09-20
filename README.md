@@ -2,15 +2,9 @@
 
 A new Flutter project.
 
-## Getting Started
+This is a ecommerce app admin panel.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![s1](https://user-images.githubusercontent.com/69424471/133992733-7bcdc0b9-f287-4351-86f5-24dd88a29d86.JPG)
+![s2](https://user-images.githubusercontent.com/69424471/133992740-35d0cf48-a4df-4bf7-bea5-3c4e77400d07.JPG)
+![s3](https://user-images.githubusercontent.com/69424471/133992742-932171f6-4ebd-4ec7-95fa-dc62737b8941.JPG)
+![s4](https://user-images.githubusercontent.com/69424471/133992745-2a8e08d5-de4c-40dd-a6ef-4bd0b9cdfb07.JPG)
