@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-This is a ecommerce app admin panel.
+This is an ecommerce app admin panel (Not complete yet).
 
 ![s1](https://user-images.githubusercontent.com/69424471/133992733-7bcdc0b9-f287-4351-86f5-24dd88a29d86.JPG)
 ![s2](https://user-images.githubusercontent.com/69424471/133992740-35d0cf48-a4df-4bf7-bea5-3c4e77400d07.JPG)
